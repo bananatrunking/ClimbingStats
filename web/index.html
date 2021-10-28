@@ -1,0 +1,96 @@
+<html>
+<head>
+	<link rel="stylesheet" href="lib/jquery-ui.min.css">
+	<script src="lib/jquery.js"></script>
+	<script src="lib/jquery-ui.min.js"></script>
+	<script src="script/submit.js"></script>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" id="form_go">
+				<span class="contact100-form-title">
+				Rock Climb
+				</span>
+
+				<form action="script/insert.php" method="post">
+
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+					<span class="label-input100">Climber *</span>
+					<div>
+						<select class="input100" name="climber" id="climber_list" required oninvalid="this.setCustomValidity('Please select climber')" oninput="setCustomValidity('')"></select>
+					</div>
+				</div>
+
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+					<span class="label-input100">Climb type *</span>
+					<div>
+						<select class="input100" name="type" id="type_list" required oninvalid="this.setCustomValidity('Please select climb type')" oninput="setCustomValidity('')"></select>
+					</div>
+				</div>
+
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+					<span class="label-input100">Grade *</span>
+					<div>
+						<select class="input100" name="grade" id="grade_list" required oninvalid="this.setCustomValidity('Please select grade')" oninput="setCustomValidity('')"></select>
+					</div>
+				</div>
+
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+					<span class="label-input100">Send type *</span>
+					<div>
+						<select class="input100" name="sendtype" id="sendtype_list" required oninvalid="this.setCustomValidity('Please select send type')" oninput="setCustomValidity('')"></select>
+					</div>
+				</div>
+
+                                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+                                        <span class="label-input100">Color</span>
+                                        <div>
+                                                <input id=color class="input100" type="text" name="color" placeholder="Enter Route Tape Color">
+                                        </div>
+                                </div>
+
+                                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+                                        <span class="label-input100">Date *</span>
+                                        <div>
+                                                <input class="input100" type="text" name="date" placeholder="--Select Date--" id="date">
+                                        </div>
+                                </div>
+
+				<div class="wrap-input100 validate-input bg1">
+					<span class="label-input100">setter</span>
+					<div>
+						<input id="setter" class="input100" type="text" name="setter" placeholder="Enter Route Setter">
+					</div>
+				</div>
+
+				<div class="wrap-input100 validate-input bg1">
+					<span class="label-input100">location</span>
+					<div>
+						<input id="location" class="input100" type="location" name="location" placeholder="Enter Location of Climb">
+					</div>
+				</div>
+
+				<div class="wrap-input100 validate-input bg1">
+					<span class="label-input100">name</span>
+					<div>
+						<input id="climbname" class="input100" type="text" name="climbname" placeholder="Enter Name of Climb">
+					</div>
+				</div>
+				<div class="wrap-input100 validate-input bg0">
+					<span class="label-input100">Beta / Notes</span>
+					<textarea id="message" class="input100" name="message" placeholder="Your message here..." style="height: 156px;"></textarea>
+					<span class="btn-hide-validate"></span>
+				</div>
+				<div class="container-contact100-form-btn">
+					<input class="contact100-form-btn" type="submit" id="submit_button" value="Submit"/>
+				</div>
+                                <p id="submit-results">
+                                	Number of routes submited 0
+                                </p>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

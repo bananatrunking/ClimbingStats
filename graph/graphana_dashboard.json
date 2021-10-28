@@ -1,0 +1,1189 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Statistics for Rock Climbing",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "content": "<div class=\"text-center dashboard-header\">\n<h1><span>Roped Climbing</span></h1>\n</div>\n",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 12,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "MySQL",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "id": 8,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "80%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n date AS \"time\",\n count(id)\nFROM climbing\nWHERE\n $__timeFilter(date) AND\n type = 'toprope'\nORDER BY date",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "count(id)"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "climbing",
+          "timeColumn": "date",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "enum",
+              "name": "",
+              "params": [
+                "type",
+                "=",
+                "'toprope'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Climbs",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 2,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 4,
+        "y": 2
+      },
+      "id": 20,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "170%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n date AS \"time\",\n grades.score\nFROM climbing\nINNER JOIN\n grades on climbing.grade=grades.grade\nWHERE\n $__timeFilter(date) and\n type = 'toprope'\nORDER BY date",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "climbing",
+          "timeColumn": "date",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Average Grade",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "170%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 11,
+        "y": 2
+      },
+      "id": 10,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "max": 100,
+            "min": 0
+          },
+          "mappings": [],
+          "override": {},
+          "thresholds": [
+            {
+              "color": "green",
+              "index": 0,
+              "value": null
+            },
+            {
+              "color": "light-green",
+              "index": 1,
+              "value": 80
+            }
+          ],
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "grade"
+              ],
+              "type": "column"
+            }
+          ],
+          "metricColumn": "grade",
+          "rawQuery": true,
+          "rawSql": "SELECT\n date AS \"time\",\n grade AS metric,\n count(grade) AS \"count(grade)\"\nFROM climbing\nWHERE\n $__timeFilter(date) AND\n type = 'toprope'\nGROUP BY grade,2\nORDER BY date",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "count(grade)"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count(grade)"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "climbing",
+          "timeColumn": "date",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "enum",
+              "name": "",
+              "params": [
+                "type",
+                "=",
+                "'toprope'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Climbs Per Grade",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "MySQL",
+      "decimals": 0,
+      "fill": 10,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 2,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {},
+      "percentage": false,
+      "pluginVersion": "6.2.1",
+      "pointradius": 4,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "10m",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "grade",
+          "rawQuery": true,
+          "rawSql": "SELECT\n $__timeGroupAlias(date, 12h),\n grade AS metric,\n count(grade)\nFROM climbing\nWHERE\n $__timeFilter(date) AND\n type = 'toprope' OR\n type = 'sport'\nGROUP BY 1,2\nORDER BY $__timeGroup(date, 12h, 0)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "count(grade)"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "climbing",
+          "timeColumn": "date",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "enum",
+              "name": "",
+              "params": [
+                "type",
+                "=",
+                "'toprope'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "enum",
+              "name": "",
+              "params": [
+                "type",
+                "=",
+                "'sport'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Climbs over time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "content": "<h1><center>Bouldering</h1>\n\n\n",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 14,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "MySQL",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 0,
+        "y": 21
+      },
+      "id": 16,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "80%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n date AS \"time\",\n count(id)\nFROM climbing\nWHERE\n $__timeFilter(date) AND\n type = 'boulder'\nORDER BY date",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "count(id)"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "climbing",
+          "timeColumn": "date",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "enum",
+              "name": "",
+              "params": [
+                "type",
+                "=",
+                "'boulder'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Climbs",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 11,
+        "y": 21
+      },
+      "id": 17,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "max": 100,
+            "min": 0
+          },
+          "mappings": [],
+          "override": {},
+          "thresholds": [
+            {
+              "color": "green",
+              "index": 0,
+              "value": null
+            },
+            {
+              "color": "red",
+              "index": 1,
+              "value": 80
+            }
+          ],
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "grade"
+              ],
+              "type": "column"
+            }
+          ],
+          "metricColumn": "grade",
+          "rawQuery": false,
+          "rawSql": "SELECT\n date AS \"time\",\n id\nFROM climbing\nWHERE\n $__timeFilter(date)\nORDER BY date",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "count(grade)"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count(grade)"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "climbing",
+          "timeColumn": "date",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "enum",
+              "name": "",
+              "params": [
+                "type",
+                "=",
+                "'boulder'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Climbs Per Grade",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "MySQL",
+      "decimals": 0,
+      "fill": 10,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 15,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {},
+      "percentage": false,
+      "pluginVersion": "6.2.1",
+      "pointradius": 4,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "10m",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "grade",
+          "rawQuery": true,
+          "rawSql": "SELECT\n $__timeGroupAlias(date,24h,0),\n grade AS metric,\n count(grade)\nFROM climbing\nWHERE\n $__timeFilter(date) AND\n type = 'boulder'\nGROUP BY 1,2\nORDER BY $__timeGroup(date,24h,0)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "count(grade)"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "climbing",
+          "timeColumn": "date",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "enum",
+              "name": "",
+              "params": [
+                "type",
+                "=",
+                "'toprope'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "enum",
+              "name": "",
+              "params": [
+                "type",
+                "=",
+                "'sport'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Climbs over time",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "content": "<h1><center>Misc</h1>\n\n\n",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 18,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "aliasColors": {
+        "black": "rgba(0, 0, 0, 0.99)",
+        "blue": "#1F60C4",
+        "green": "#37872D",
+        "orange": "#FA6400",
+        "pink": "#FFA6B0",
+        "purple": "#8F3BB8",
+        "red": "#C4162A",
+        "tan": "#FFCB7D",
+        "yellow": "#FFEE52"
+      },
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "decimals": null,
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 40
+      },
+      "id": 6,
+      "interval": null,
+      "legend": {
+        "percentage": false,
+        "show": true,
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "color"
+              ],
+              "type": "column"
+            }
+          ],
+          "metricColumn": "color",
+          "rawQuery": false,
+          "rawSql": "SELECT\n date AS \"time\",\n color AS metric,\n count(color) AS \"count(color)\"\nFROM climbing\nWHERE\n $__timeFilter(date)\nGROUP BY color,2\nORDER BY date",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "count(color)"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count(color)"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "climbing",
+          "timeColumn": "date",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Tape Color",
+      "transparent": true,
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "description": "",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 40
+      },
+      "id": 4,
+      "interval": null,
+      "legend": {
+        "show": true,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "pie",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "setter"
+              ],
+              "type": "column"
+            }
+          ],
+          "metricColumn": "setter",
+          "rawQuery": false,
+          "rawSql": "SELECT\n date AS \"time\",\n setter AS metric,\n count(setter) AS \"count(setter)\"\nFROM climbing\nWHERE\n $__timeFilter(date)\nGROUP BY setter,2\nORDER BY date",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "count(setter)"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count(setter)"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "climbing",
+          "timeColumn": "date",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Climbs by Setter",
+      "transparent": true,
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 18,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2019-05-27T16:12:30.597Z",
+    "to": "2019-09-07T10:13:37.216Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Climbing Stats",
+  "uid": "1CIiBxMWk",
+  "version": 31
+}
